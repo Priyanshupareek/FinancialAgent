@@ -27,11 +27,23 @@ class FinancialCrew:
     research_analyst_agent = agents.research_analyst()
     financial_analyst_agent = agents.financial_analyst()
     investment_advisor_agent = agents.investment_advisor()
+    Knowledge_Scraper_agent = agents.Knowledge_Scraper()
+    market_sentiment_analyst_agent = agents.market_sentiment_analyst()
+    Summarizer_agent = agents.Summarizer()
 
     research_task = tasks.research(research_analyst_agent, self.country)
     financial_task = tasks.financial_analysis(financial_analyst_agent)
     filings_task = tasks.filings_analysis(financial_analyst_agent)
     recommend_task = tasks.recommend(investment_advisor_agent)
+    Info_Gather_task = tasks.Info_Gather(Knowledge_Scraper_agent)
+    Research_task = tasks.Research(research_analyst_agent)
+    Summarize_task = tasks.Summarize(Summarizer_agent)
+    Sentiment_Analysis_task = tasks.Sentiment_Analysis(market_sentiment_analyst_agent)
+    Market_Research_task = tasks.Market_Research(market_sentiment_analyst_agent)
+    Financial_Metric_Analysis_task = tasks.Financial_Metric_Analysis(financial_analyst_agent)
+    Filing_Info_Gather_task = tasks.Filing_Info_Gather(Knowledge_Scraper_agent)
+    Filing_Analysis_task = tasks.Filing_Analysis(financial_analyst_agent)
+    Recommend_task = tasks.Recommend(investment_advisor_agent)
 
     crew = Crew(
       agents=[
@@ -53,7 +65,7 @@ class FinancialCrew:
 
 
 if __name__ == "__main__":
-  print("## Welcome to Financial Analysis Crew")
+  print("## Financial Analysis Crew")
   print('-------------------------------')
   country = input(
     dedent("""
